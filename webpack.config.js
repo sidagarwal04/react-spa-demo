@@ -1,14 +1,16 @@
-var config = {
+var webpack = require('webpack');
+var path = require('path');
+
+module.exports = {
    entry: './main.js',
   
    output: {
-      path:'./',
-      filename: 'index.js',
-   },
+   	path: path.join(__dirname, '/'),
+	filename: 'index.js'
+	},
   
    devServer: {
       inline: true,
-      port: 8080
    },
   
    module: {
@@ -21,9 +23,13 @@ var config = {
             query: {
                presets: ["react", "es2015"]
             }
-         }
+         },
+         { test: /\.css$/, loader: 'style!css!sass' }
       ]
-   }
-}
-
-module.exports = config;
+   },
+   plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+]
+};

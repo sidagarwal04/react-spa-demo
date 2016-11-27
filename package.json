@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Demo SPA using React.JS and Node.JS",
   "repository": "https://github.com/sidagarwal04/react-spa-demo",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "webpack-dev-server --hot"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+	"postinstall": "webpack -p --config webpack.prod.config.js"
   },
   "author": "Siddhant Agarwal <er.siddhantagarwal@gmail.com>",
   "license": "MIT",
@@ -17,9 +19,12 @@
     "webpack": "^1.12.0"
   },
   "dependencies": {
+    "express": "^4.14.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-router": "^2.5.2",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-dev-middleware": "^1.6.1",
+	"webpack-hot-middleware": "^2.10.0"
   }
 }
